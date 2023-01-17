@@ -18,8 +18,8 @@ public class CategoryController {
 
     @RequestMapping("")
     public String List(ModelMap model) {
-        List<Category> list = categoryService.findAll();
-        model.addAttribute("categories", list);
-        return "admin/categories/list";
+//        List<Category> list = categoryService.findAll();
+//        model.addAttribute("categories", list);
+        return "admin/categories/add";
     }
 }
