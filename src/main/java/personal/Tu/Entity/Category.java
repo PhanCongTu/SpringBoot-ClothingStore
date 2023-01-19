@@ -3,6 +3,8 @@ package personal.Tu.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
+
 @Entity
 @Setter
 @Getter
@@ -13,7 +15,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="CategoryId")
-    private long categoryId;
+    private int categoryId;
 
     @Column(name="CategoryName", columnDefinition = "nvarchar(255)")
     private String categoryName;
@@ -23,5 +25,8 @@ public class Category {
 
     @Column(name="Status")
     private boolean status;
+
+    @Column(name="createdAt")
+    private Date createdAt;
 
 }

@@ -40,25 +40,25 @@
             </div>
 
             <div class="row col-lg-12 add-listing">
-                <form method="post" action="" enctype="multipart/form-data" >
+                <form method="post" action="save-or-update" enctype="multipart/form-data" >
                     <div class="add-listing-section">
                         <div class="row with-forms">
                             <h4>Tên danh mục <i class="tip" data-tip-content="Điền tên danh mục bạn muốn tạo"></i>
                             </h4>
-                            <input class="search-field" type="text" value="" />
+                            <input name="categoryName" class="search-field" type="text" value="" />
                         </div>
                         <div class="row with-forms">
                             <h4> Ảnh đại diện <i class="tip" data-tip-content="Chỉ cần thêm 1 ảnh"></i></h4>
                             <img style="padding-bottom: 30px;"
-                                 src="https://vcdn1-vnexpress.vnecdn.net/2020/09/11/sh8fzyt4-159886611234720470620-5969-5840-1599809570.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=9fS0hHSZamGuZ9BYgx6Tyw"
+                                 src="/images/noimage.jpg"
                                  alt="Girl in a jacket" height=" 200">
                             <!-- file -->
-                            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                            <input type="file" id="avatar" name="imageFile" accept="image/png, image/jpeg">
                         </div>
                     </div>
                     <!-- Section / End -->
                     <div style="display: flex; justify-content: right;">
-                        <button href="#" class="button preview">Thêm <i class="fa fa-arrow-circle-right"></i></button>
+                        <button type="submit" href="#" class="button preview">Thêm <i class="fa fa-arrow-circle-right"></i></button>
                     </div>
                 </form>
             </div>
