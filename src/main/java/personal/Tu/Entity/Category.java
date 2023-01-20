@@ -23,9 +23,6 @@ public class Category {
     @Column(name="Images", columnDefinition = "nvarchar(MAX)")
     private String images;
 
-    @Column(name="Status")
-    private boolean status;
-
     @Column(name="createdAt")
     private Date createdAt;
 

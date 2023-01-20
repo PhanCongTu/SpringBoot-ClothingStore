@@ -26,39 +26,47 @@
             <div id="titlebar">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>Thêm danh mục</h2>
+                        <h2  th:utext="${category.isEdit==true?'Cập nhật danh mục':'Thêm danh mục'}"></h2>
                         <!-- Breadcrumbs -->
                         <nav id="breadcrumbs">
                             <ul>
                                 <li><a href="#">Trang chủ</a></li>
                                 <li><a href="#">Bảng điều khiển</a></li>
-                                <li>Thêm danh mục</li>
+                                <li th:utext="${category.isEdit==true?'Cập nhật danh mục':'Thêm danh mục'}"></li>
                             </ul>
                         </nav>
                     </div>
                 </div>
             </div>
 
-            <div class="row col-lg-12 add-listing">
-                <form method="post" action="save-or-update" enctype="multipart/form-data" >
+            <div class="row  add-listing">
+                <form method="post" th:action="@{/admin/categories/save-or-update}" enctype="multipart/form-data">
                     <div class="add-listing-section">
-                        <div class="row with-forms">
+                        <div hidden="hidden">
+                            <label for="ID">Category ID:</label>
+                            <input type="text" name="categoryId" th:value="${category.categoryId }" id="ID"
+                                   class="form-control" readonly/>
+                        </div>
+                        <div class="row with-forms col-lg-12">
                             <h4>Tên danh mục <i class="tip" data-tip-content="Điền tên danh mục bạn muốn tạo"></i>
                             </h4>
-                            <input name="categoryName" class="search-field" type="text" value="" />
+                            <input name="categoryName" class="search-field" type="text"
+                                   th:value="${category.categoryName}"/>
                         </div>
-                        <div class="row with-forms">
+                        <div class="row with-forms col-lg-6">
                             <h4> Ảnh đại diện <i class="tip" data-tip-content="Chỉ cần thêm 1 ảnh"></i></h4>
-                            <img style="padding-bottom: 30px;"
-                                 src="/images/noimage.jpg"
-                                 alt="Girl in a jacket" height=" 200">
+                            <img th:if="${category.getImages()==null}" style="padding-bottom: 30px; max-height: 200px; max-width: 200px"
+                                 src="/images/noimage.jpg" alt="Girl in a jacket"  height="200">
+                            <img th:if="${category.getImages()!=null}" style="padding-bottom: 30px;max-height: 200px; max-width: 200px"
+                                 th:src="${category.images}" alt="Girl in a jacket" height="200">
                             <!-- file -->
-                            <input type="file" id="avatar" name="imageFile" accept="image/png, image/jpeg">
+                            <input th:value="${category.getImageFile()}" type="file" id="avatar" name="imageFile" accept="image/png, image/jpeg">
                         </div>
                     </div>
                     <!-- Section / End -->
                     <div style="display: flex; justify-content: right;">
-                        <button type="submit" href="#" class="button preview">Thêm <i class="fa fa-arrow-circle-right"></i></button>
+                        <button type="submit" href="#" class="button preview" th:utext="${category.isEdit==true?'Cập nhật':'Thêm'}" ><i
+                                class="fa fa-arrow-circle-right"></i></button>
                     </div>
                 </form>
             </div>
