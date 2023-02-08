@@ -37,10 +37,10 @@ public class CategoryController {
     Cloudinary cloudinary;
 
     @RequestMapping("")
-    public String List(ModelMap model) {
-        List<Category> list = categoryService.findAll();
-        model.addAttribute("categories", list);
-        return "admin/categories/listPagenated";
+    public ModelAndView List(ModelMap modelMap) {
+//        List<Category> list = categoryService.findAll();
+//        model.addAttribute("categories", list);
+        return new ModelAndView("forward:/admin/categories/search-pagenated", modelMap);
     }
 
     @GetMapping("add")
@@ -53,7 +53,6 @@ public class CategoryController {
     @PostMapping("save-or-update")
     public ModelAndView saveOrUpdate(ModelMap modelMap, @Valid @ModelAttribute("category") CategoryModel categoryModel, BindingResult result){
         if (result.hasErrors()){
-            System.out.println(result.getAllErrors());
             return new ModelAndView("admin/categories/addOrEdit");
         }
         Category category = new Category();
@@ -62,7 +61,6 @@ public class CategoryController {
 
 
         if (!categoryModel.getImageFile().isEmpty()){
-            System.out.println("Vào if");
             try {
                 Map r = this.cloudinary.uploader().upload(categoryModel.getImageFile().getBytes(),
                         ObjectUtils.asMap("resource_type","auto"));
@@ -104,27 +102,20 @@ public class CategoryController {
 
     @RequestMapping("search-pagenated")
     public String search(ModelMap modelMap, @RequestParam(name="name", required = false) String name,
-                         @RequestParam("page") Optional<Integer> page,
-                         @RequestParam("size") Optional<Integer> size){
+                         @RequestParam("page") Optional<Integer> page){
         int countAll = (int) categoryService.count();
         int curentPage = page.orElse(1);
-        int pageSize = size.orElse(3);
+        int pageSize = 6;
 
         Pageable pageable = PageRequest.of(curentPage-1, pageSize, Sort.by("categoryId"));
         Page<Category> resultPage = null;
         if(StringUtils.hasText(name)){
-            System.out.println("vào if");
-            System.out.println("search Texr: " + name);
             resultPage = categoryService.findByCategoryNameContaining(name, pageable);
-            System.out.println("Kết quả trong:");
-            System.out.println(resultPage);
+            countAll = categoryService.countByCategoryNameContaining(name);
             modelMap.addAttribute("name", name);
         }else{
-            System.out.println("vào else");
             resultPage = categoryService.findAll(pageable);
         }
-        System.out.println("Kết quả ngoài:");
-        System.out.println(resultPage);
         int totalPages = resultPage.getTotalPages();
 
         if(totalPages>0){
@@ -140,6 +131,7 @@ public class CategoryController {
             List<Integer> pageNumbers = IntStream.rangeClosed(start,end).boxed().collect(Collectors.toList());
             modelMap.addAttribute("pageNumbers", pageNumbers);
         }
+        modelMap.addAttribute("countAll", countAll);
         modelMap.addAttribute("categories", resultPage);
         return "admin/categories/listPagenated";
     }

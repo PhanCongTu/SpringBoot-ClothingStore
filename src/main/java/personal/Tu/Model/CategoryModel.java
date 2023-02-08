@@ -19,6 +19,6 @@ public class CategoryModel {
     private String images;
     private MultipartFile imageFile; // Lưu hình
     long millis = System.currentTimeMillis();
-    private Date createdAt = new java.sql.Date(millis);;
+    private Date createdAt = new java.sql.Date(System.currentTimeMillis());
     private Boolean isEdit = false;
 }

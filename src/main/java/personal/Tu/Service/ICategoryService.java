@@ -28,4 +28,6 @@ public interface ICategoryService {
     List<Category> findAll(Sort sort);
 
     Page<Category> findByCategoryNameContaining(String categoryName, Pageable pageable);
+
+    int countByCategoryNameContaining(String categoryName);
 }

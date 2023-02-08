@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/fragments/head :: head">
+</head>
+
+<body>
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header Container
+  ================================================== -->
+    <div th:insert="admin/fragments/userHeader :: headerUser"></div>
+    <!-- Header Container / End -->
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <!-- Navigation
+    ================================================== -->
+        <!-- Responsive Navigation Trigger -->
+        <section th:replace="admin/fragments/navigation::navigation"></section>
+        <!-- Content
+    ================================================== -->
+        <div class="dashboard-content">
+
+            <!-- Titlebar -->
+            <div id="titlebar">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Danh sách các sản phẩm</h2>
+                        <!-- Breadcrumbs -->
+                        <nav id="breadcrumbs">
+                            <ul>
+                                <li><a href="#">Trang chủ</a></li>
+                                <li><a href="#">Bảng điều khiển</a></li>
+                                <li>Danh sách các sản phẩm</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search -->
+            <div class="col-md-12">
+                <div class="main-search-input gray-style margin-top-0 margin-bottom-10">
+
+                    <div class="main-search-input-item">
+                        <input type="text" placeholder="Bạn đang tìm kiếm thứ gì?" value="" />
+                    </div>
+
+                    <div class="main-search-input-item">
+                        <select data-placeholder="Tất cả" class="chosen-select">
+                            <option>Tất cả</option>
+                            <option>Áo nam</option>
+                            <option>Áo nữ</option>
+                            <option>Quần nam</option>
+                            <option>Quần nữ</option>
+                        </select>
+                    </div>
+
+                    <button class="button">Tìm</button>
+                </div>
+            </div>
+            <!-- Search Section / End -->
+            <div class="col-md-12">
+
+                <!-- Sorting - Filtering Section -->
+                <div class="row margin-bottom-25 margin-top-30">
+
+                    <div class="col-md-6">
+                        <!-- Layout Switcher -->
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="fullwidth-filters">
+                            <!-- Sort by -->
+                            <div class="sort-by">
+                                <div class="sort-by-select">
+                                    <select data-placeholder="Tăng dần" class="chosen-select-no-single">
+                                        <option>Tăng dần</option>
+                                        <option>Giảm dần</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Sort by / End -->
+                            <!-- Sort by -->
+                            <div class="sort-by">
+                                <div class="sort-by-select">
+                                    <select data-placeholder="Giá tiền" class="chosen-select-no-single">
+                                        <option>Giá tiền</option>
+                                        <option>Đánh giá</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Sort by / End -->
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Sorting - Filtering Section / End -->
+
+
+                <div class="row">
+
+                    <!-- Listing Item -->
+                    <div class="col-lg-3 col-md-6">
+                        <a href="listings-single-page.html" class="listing-item-container compact">
+                            <div class="listing-item">
+                                <img src="https://vcdn1-vnexpress.vnecdn.net/2020/09/11/sh8fzyt4-159886611234720470620-5969-5840-1599809570.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=9fS0hHSZamGuZ9BYgx6Tyw"
+                                     alt="">
+
+                                <div class="listing-badge now-open">Còn hàng</div>
+
+                                <div class="listing-item-content">
+                                    <div class="numerical-rating" data-rating="3.5"></div>
+                                    <h4>
+                                        <p style="color: whitesmoke;">Tom's Restaurantá dasdasdsdas</p>
+                                    </h4>
+                                    <span>65000 VND</span>
+                                </div>
+                                <span class="like-icon"></span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Listing Item / End -->
+
+                    <!-- Listing Item -->
+                    <div class="col-lg-3 col-md-6">
+                        <a href="listings-single-page.html" class="listing-item-container compact">
+                            <div class="listing-item">
+                                <img src="images/listing-item-01.jpg" alt="">
+
+                                <div class="listing-badge now-closed">Hết hàng</div>
+
+                                <div class="listing-item-content">
+                                    <div class="numerical-rating" data-rating="5"></div>
+                                    <h4>
+                                        <p style="color: whitesmoke;">Tom's Restaurant</p>
+                                    </h4>
+                                    <span>65000 VND</span>
+                                </div>
+                                <span class="like-icon"></span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Listing Item / End -->
+
+                    <div class="clearfix"></div>
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-12">-->
+<!--                            <div th:if="${products.getTotalPages()>1}">-->
+<!--                                <ul class="pagination">-->
+<!--                                    <li th:class="${products.number+1==1 ? 'page-item disabled':'page-item'}">-->
+<!--                                        <a class="page-link"-->
+<!--                                           th:href="@{/admin/products/search-pagenated(name=${name},page=${1})}">Trang-->
+<!--                                            đầu</a>-->
+<!--                                    </li>-->
+
+<!--                                    <li th:if="${products.getNumber()-1>0}"-->
+<!--                                        class="page-item">-->
+<!--                                        <a-->
+<!--                                                class="page-link "-->
+<!--                                                th:href="@{/admin/products/search-pagenated(name=${name},page=${products.getNumber()-1})}"-->
+<!--                                                th:utext="${products.getNumber()-1}"></a>-->
+<!--                                    </li>-->
+<!--                                    <li th:if="${products.number>0}"-->
+<!--                                        class="page-item">-->
+<!--                                        <a-->
+<!--                                                class="page-link "-->
+<!--                                                th:href="@{/admin/products/search-pagenated(name=${name},page=${products.number})}"-->
+<!--                                                th:utext="${products.number}"></a>-->
+<!--                                    </li>-->
+<!--                                    <li th:if="${products.number+1>0}"-->
+<!--                                        class="page-item active">-->
+<!--                                        <a-->
+<!--                                                class="page-link"-->
+<!--                                                th:href="@{/admin/products/search-pagenated(name=${name},page=${products.number+1})}"-->
+<!--                                                th:utext="${products.number+1}"></a>-->
+<!--                                    </li>-->
+
+<!--                                    <li th:if="${products.number+2>0 && products.number+2 < products.getTotalPages()+1}"-->
+<!--                                        class="page-item">-->
+<!--                                        <a-->
+<!--                                                class="page-link"-->
+<!--                                                th:href="@{/admin/products/search-pagenated(name=${name},page=${products.number+2})}"-->
+<!--                                                th:utext="${products.number+2}"></a>-->
+<!--                                    </li>-->
+<!--                                    <li th:if="${products.number+3>0 && products.number+3 < products.getTotalPages()+1}"-->
+<!--                                        class="page-item">-->
+<!--                                        <a-->
+<!--                                                class="page-link"-->
+<!--                                                th:href="@{/admin/products/search-pagenated(name=${name},page=${products.number+3})}"-->
+<!--                                                th:utext="${products.number+3}"></a>-->
+<!--                                    </li>-->
+
+<!--                                    <li th:class="${products.number+1==products.totalPages ? 'page-item disabled':'page-item'}">-->
+<!--                                        <a class="page-link"-->
+<!--                                           th:href="@{/admin/products/search-pagenated(name=${name},page=${products.totalPages})}">Trang-->
+<!--                                            cuối</a>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+
+
+            </div>
+
+        </div>
+        <!-- Content / End -->
+    </div>
+    <!-- Dashboard / End -->
+</div>
+<!-- Wrapper / End -->
+<footer th:replace="admin/fragments/footer::footer"></footer>
+</body>
+
+</html>

@@ -70,4 +70,9 @@ public class CategoryServiceImpl implements ICategoryService {
     public Page<Category> findByCategoryNameContaining(String categoryName, Pageable pageable) {
         return categoryRepository.findByCategoryNameContaining(categoryName, pageable);
     }
+
+    @Override
+    public int countByCategoryNameContaining(String categoryName) {
+        return categoryRepository.countByCategoryNameContaining(categoryName);
+    }
 }

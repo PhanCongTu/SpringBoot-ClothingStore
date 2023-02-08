@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="admin/categories/fragments/head :: head">
+<head th:replace="admin/fragments/head :: head">
 </head>
 
 <body>
@@ -10,14 +10,14 @@
 
     <!-- Header Container
 ================================================== -->
-    <div th:insert="admin/categories/fragments/userHeader :: headerUser"></div>
+    <div th:insert="admin/fragments/userHeader :: headerUser"></div>
     <!-- Header Container / End -->
     <!-- Dashboard -->
     <div id="dashboard">
         <!-- Navigation
 ================================================== -->
         <!-- Responsive Navigation Trigger -->
-        <section th:replace="admin/categories/fragments/navigation::navigation"></section>
+        <section th:replace="admin/fragments/navigation::navigation"></section>
         <!-- Content
 ================================================== -->
         <div class="dashboard-content">
@@ -77,7 +77,7 @@
     <!-- Dashboard / End -->
 </div>
 <!-- Wrapper / End -->
-<footer th:replace="admin/categories/fragments/footer::footer"></footer>
+<footer th:replace="admin/fragments/footer::footer"></footer>
 </body>
 
 </html>

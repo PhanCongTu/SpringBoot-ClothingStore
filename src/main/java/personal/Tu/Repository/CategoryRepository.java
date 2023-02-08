@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
     Page<Category> findByCategoryNameContaining(String categoryName, Pageable pageable);
+    int countByCategoryNameContaining(String categoryName);
 }

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/fragments/head :: head">
+</head>
+
+<body>
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header Container
+================================================== -->
+    <div th:insert="admin/fragments/userHeader :: headerUser"></div>
+    <!-- Header Container / End -->
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <!-- Navigation
+================================================== -->
+        <!-- Responsive Navigation Trigger -->
+        <section th:replace="admin/fragments/navigation::navigation"></section>
+        <!-- Content
+================================================== -->
+        <div class="dashboard-content">
+
+            <!-- Titlebar -->
+            <div id="titlebar">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Thêm size</h2>
+                        <!-- Breadcrumbs -->
+                        <nav id="breadcrumbs">
+                            <ul>
+                                <li><a href="#">Trang chủ</a></li>
+                                <li><a href="#">Bảng điều khiển</a></li>
+                                <li>Thêm size</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div id="add-listing">
+
+
+
+                        <!-- Price -->
+                        <div class="add-listing-section margin-top-45">
+                            <div class="row">
+                                <h3>Tên sản phẩm: <span><b style="color: rgb(0, 75, 145);">Giày Bitis</b></span>
+                                </h3>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table id="pricing-list-container">
+                                        <tr class="pricing-list-item pattern">
+                                            <td>
+                                                <div class="fm-input pricing-name"><input type="text"
+                                                                                          placeholder="Tên size" /></div>
+                                                <div class="fm-input pricing-price"><input type="text"
+                                                                                           placeholder="Số lượng" data-unit="cái" /></div>
+                                                <span>
+														<a style="margin-top: 0px; margin-left: 20px;" href=" #"
+                                                           class="button preview">Thêm <i
+                                                                class="fa fa-arrow-circle-right"></i></a>
+
+													</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Section / End -->
+                    </div>
+                </div>
+
+                <!-- Copyrights -->
+                <div class="col-md-12">
+                    <div class="copyrights">© 2021 Listeo. All Rights Reserved.</div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Content / End -->
+    </div>
+    <!-- Dashboard / End -->
+</div>
+<!-- Wrapper / End -->
+<footer th:replace="admin/fragments/footer::footer"></footer>
+</body>
+
+</html>
